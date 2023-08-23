@@ -201,16 +201,29 @@ scene.add(camera);
 const listener = new THREE.AudioListener();
 camera.add(listener);
 
+const backgroundSound = new THREE.Audio(listener);
+scene.add(backgroundSound);
+
 const audioLoader = new THREE.AudioLoader();
 
-const backgroundSound = new THREE.Audio(listener);
+audioLoader.load(
+  "./TETRA.mp3",
+  function (buffer) {
+    backgroundSound.setBuffer(buffer);
+    backgroundSound.setLoop(true);
+    backgroundSound.setVolume(0.3);
+    backgroundSound.play();
+  },
+  // onProgress callback
+  function (xhr) {
+    console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+  },
 
-audioLoader.load("./TETRA.mp3", function (buffer) {
-  backgroundSound.setBuffer(buffer);
-  backgroundSound.setLoop(true);
-  backgroundSound.setVolume(0.3);
-  backgroundSound.play();
-});
+  // onError callback
+  function (err) {
+    console.log("An error happened");
+  }
+);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
