@@ -207,7 +207,7 @@ scene.add(backgroundSound);
 
 const audioLoader = new THREE.AudioLoader();
   audioLoader.load(
-    "./TETRA.mp3",
+    "/TETRA.mp3",
     function (buffer) {
       backgroundSound.setBuffer(buffer);
       backgroundSound.setLoop(true);
