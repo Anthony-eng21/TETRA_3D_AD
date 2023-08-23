@@ -208,7 +208,7 @@ const audioLoader = new THREE.AudioLoader();
 // Initialize the audio only after a user gesture (e.g., click)
 document.addEventListener("click", function () {
   audioLoader.load(
-    "/TETRA.mp3", // Adjust the path if necessary
+    "/audio/TETRA.mp3", // Adjust the path if necessary
     function (buffer) {
       backgroundSound.setBuffer(buffer);
       backgroundSound.setLoop(true);
