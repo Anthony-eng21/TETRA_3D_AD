@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { gsap } from "gsap";
+
 //loading the font le wrongish way
 // import typeFaceFont from "three/examples/fonts/helvetiker_regular.typeface.json"
 import * as dat from "lil-gui";
@@ -143,7 +144,6 @@ fontLoader.load(
       repeat: -1, //repeats infinitely
       ease: "none", //Linear ease
     });
-
   }
 );
 
@@ -195,6 +195,22 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.set(0, 0, 6);
 scene.add(camera);
+
+//Audio
+// Create a new audio element for the background music
+const listener = new THREE.AudioListener();
+camera.add(listener);
+
+const audioLoader = new THREE.AudioLoader();
+
+const backgroundSound = new THREE.Audio(listener);
+
+audioLoader.load("./TETRA.mp3", function (buffer) {
+  backgroundSound.setBuffer(buffer);
+  backgroundSound.setLoop(true);
+  backgroundSound.setVolume(0.3);
+  backgroundSound.play();
+});
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
