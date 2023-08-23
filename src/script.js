@@ -163,11 +163,6 @@ scene.add(directionalLight);
 /**
  * Object
  */
-const cube = new THREE.Mesh(
-  new THREE.BoxGeometry(1, 1, 1),
-  new THREE.MeshBasicMaterial()
-);
-
 // cube.position.x = -2
 // scene.add(cube);
 
@@ -203,9 +198,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.x = 2;
-camera.position.y = 2;
-camera.position.z = 4;
+camera.position.set(0, 0, 100);
 scene.add(camera);
 
 // Controls
