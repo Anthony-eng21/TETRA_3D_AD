@@ -58,7 +58,7 @@ fontLoader.load(
      */
     const textGeometry = new TextGeometry("TETRA MAFIA", {
       font: font, // an instance of THREE.Font
-      size: 0.6, // Float. Size of the text. Default is 100.
+      size: 0.5, // Float. Size of the text. Default is 100.
       height: 0.2, // Float. Thickness to extrude text. Default is 50.
       curveSegments: 12, // Integer. Number of points on the curves. Default is 12
       bevelEnabled: true, // Boolean. Turn on bevel. Default is False.
@@ -144,11 +144,6 @@ fontLoader.load(
       ease: "none", //Linear ease
     });
 
-    // Center and position the camera to look at the text geometry
-    const textBoundingBox = new THREE.Box3().setFromObject(text);
-    const target = textBoundingBox.getCenter(new THREE.Vector3());
-    camera.position.copy(target.clone().add(new THREE.Vector3(2, 2, 2))); // Adjust camera position as needed
-    camera.lookAt(target);
   }
 );
 
@@ -198,7 +193,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(0, 0, 100);
+camera.position.set(0, 0, 5);
 scene.add(camera);
 
 // Controls
