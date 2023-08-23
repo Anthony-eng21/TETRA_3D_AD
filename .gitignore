@@ -1,0 +1,38 @@
+# Vite generated files
+dist/
+node_modules/
+.cache/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.bak
+
+# Logs and debugging files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+error.log
+debug.log
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables file
+.env.local
+
+# Build and development artifacts
+build/
+.vite/
+
+# Local development server settings
+.vitepress/
+.vite_optimize_cache/
