@@ -206,7 +206,10 @@ scene.add(backgroundSound);
 const audioLoader = new THREE.AudioLoader();
 
 // Initialize the audio only after a user gesture (e.g., click)
-document.addEventListener("click", function () {
+document.addEventListener("click", playAudio);
+document.addEventListener("touchstart", playAudio);
+
+function playAudio() {
   audioLoader.load(
     "/audio/TETRA.mp3", // Adjust the path if necessary
     function (buffer) {
@@ -222,7 +225,7 @@ document.addEventListener("click", function () {
       console.log("An error happened", err);
     }
   );
-});
+}
 
 // ... The rest of your code ...
 
