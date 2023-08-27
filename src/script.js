@@ -149,11 +149,19 @@ fontLoader.load(
 
 //add light
 // Add lighting
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
-scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(5, 5, 5);
-scene.add(directionalLight);
+// Create a light source for shadow casting
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(5, 10, 7);
+light.castShadow = true; // Enable shadow casting
+light.shadow.mapSize.width = 1024; // Shadow map resolution
+light.shadow.mapSize.height = 1024;
+scene.add(light);
+
+// Set up shadow properties
+light.shadow.camera.near = 0.5; // Near clipping plane for the shadow camera
+light.shadow.camera.far = 50;   // Far clipping plane for the shadow camera
+
+
 
 /**
  * Object
