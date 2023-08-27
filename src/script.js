@@ -43,6 +43,7 @@ const textMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture });
 //instanciate donuts and bubbles arrray to push objects into
 const pyramids = [];
 const bubbles = [];
+let text;
 /**Fonts
  *
  */
@@ -69,7 +70,7 @@ fontLoader.load(
       bevelSegments: 5, //  Integer. Number of bevel segments. Default is 3.
     });
 
-    const text = new THREE.Mesh(textGeometry, textMaterial);
+    text = new THREE.Mesh(textGeometry, textMaterial);
 
     /**Centering the textgeometry with boundingbox
      * we use this bounding to know the size of the geometry and recenter it
@@ -159,9 +160,7 @@ scene.add(light);
 
 // Set up shadow properties
 light.shadow.camera.near = 0.5; // Near clipping plane for the shadow camera
-light.shadow.camera.far = 50;   // Far clipping plane for the shadow camera
-
-
+light.shadow.camera.far = 50; // Far clipping plane for the shadow camera
 
 /**
  * Object
@@ -226,8 +225,9 @@ function playAudio() {
       backgroundSound.setVolume(0.3);
       backgroundSound.play();
     },
+    //DEBUGGING HELPERS
     function (xhr) {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      // console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
     },
     function (err) {
       console.log("An error happened", err);
@@ -257,11 +257,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 const clock = new THREE.Clock();
 
 const tick = () => {
-  const elapsedTime = clock.getElapsedTime();
 
-  pyramids.forEach((pyramid) => {
-    // pyramid.rotation.x = elapsedTime * Math.PI * 2;
-  });
+  const elapsedTime = clock.getElapsedTime()
 
   bubbles.forEach((bubble) => {
     // Calculate the local position within the local coordinate system
