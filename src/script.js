@@ -107,7 +107,7 @@ fontLoader.load(
       opacity: 0.5, // Set opacity for the bubble effect
     });
 
-    for (let i = 0; i <= 300; i++) {
+    for (let i = 0; i <= 350; i++) {
       //pyramids
       const tetraMesh = new THREE.Mesh(tetra, pyramidMaterial);
       tetraMesh.position.x = (Math.random() - 0.5) * 15;
@@ -124,7 +124,7 @@ fontLoader.load(
       scene.add(tetraMesh);
     }
 
-    for (let i = 0; i <= 300; i++) {
+    for (let i = 0; i <= 350; i++) {
       //bubbles
       const bubble = new THREE.Mesh(sphereGeometry, soapBubbleMaterial);
       bubble.position.x = (Math.random() - 0.5) * 15;
