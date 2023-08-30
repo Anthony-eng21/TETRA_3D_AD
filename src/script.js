@@ -148,8 +148,15 @@ fontLoader.load(
   }
 );
 
-//add light
-// Add lighting
+// Added lighting
+const ambientLight = new THREE.AmbientLight();
+ambientLight.color = new THREE.Color(0xffffff);
+ambientLight.intensity = 0.5;
+scene.add(ambientLight);
+
+const hemisphereLight = new THREE.HemisphereLight(0xff0000, 0x0000ff, 0.3);
+scene.add(hemisphereLight);
+
 // Create a light source for shadow casting
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(5, 10, 7);
@@ -157,6 +164,9 @@ light.castShadow = true; // Enable shadow casting
 light.shadow.mapSize.width = 1024; // Shadow map resolution
 light.shadow.mapSize.height = 1024;
 scene.add(light);
+
+const pointLight = new THREE.PointLight(0xff9000, 0.5);
+scene.add(pointLight);
 
 // Set up shadow properties
 light.shadow.camera.near = 0.5; // Near clipping plane for the shadow camera
